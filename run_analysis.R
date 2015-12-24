@@ -75,13 +75,12 @@ summarydat=sapply(splitdat2, function(x) colMeans(x), simplify=T)
 tidydat=t(summarydat)
 
 #splitting out subject and activity values from row names to add as column
-x=strsplit(row.names(tidydat), split=".", fixed=TRUE)
-activity=sapply(x, function(x) x[1])
-subject=sapply(x, function(x) x[2])
-fintidydat=data.frame(activity, subject, tidydat)
-rownames(fintidydat)=NULL
-colnames(fintidydat)=gsub("...", ".", colnames(fintidydat), fixed=TRUE)
+# x=strsplit(row.names(tidydat), split=".", fixed=TRUE)
+# activity=sapply(x, function(x) x[1])
+# subject=sapply(x, function(x) x[2])
+# fintidydat=data.frame(activity, subject, tidydat)
+# rownames(fintidydat)=NULL
+# colnames(fintidydat)=gsub("...", ".", colnames(fintidydat), fixed=TRUE)
 
-write.csv(fintidydat, "C:\\Users\\Diane\\Documents\\gitRepo\\tidydata.csv", row.names=FALSE)
+write.table(tidydat, "C:\\Users\\Diane\\Documents\\gitRepo\\datacleaning\\tidydata.txt", row.names=FALSE)
 
-#########anything else??? data.frame seems to change column names, whichis fine but may want to improve names
